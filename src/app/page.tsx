@@ -4,9 +4,10 @@ import Skull from '@/components/hacker/skull';
 export default function Home() {
   const mainMessage = 'Hacked By Muhammad Dzaky Haidar';
   const secondaryMessage = "You've been owned!";
+  const pocMessage = 'For PoC purposes';
 
   return (
-    <div className="relative min-h-screen bg-background flex flex-col items-center justify-center text-center overflow-hidden">
+    <div className="relative min-h-screen bg-black flex flex-col items-center justify-center text-center overflow-hidden">
       <MatrixRain />
       <main className="relative z-10 flex flex-col items-center justify-center p-4">
         <div className="mb-8 animate-pulse">
@@ -23,6 +24,12 @@ export default function Home() {
           data-text={secondaryMessage}
         >
           {secondaryMessage}
+        </p>
+        <p
+          className="mt-2 text-lg md:text-xl text-yellow-400 glitch"
+          data-text={pocMessage}
+        >
+          {pocMessage}
         </p>
       </main>
     </div>
