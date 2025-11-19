@@ -32,9 +32,8 @@ export default function Home() {
           {pocMessage}
         </p>
       </main>
-      <audio autoPlay loop>
-        {/* Ganti dengan path ke file audio Anda, misalnya /music.mp3 jika Anda meletakkannya di folder public */}
-        <source src="https://storage.googleapis.com/studioprod-project-data-3gdu3a1f2e/4331a980-928d-429f-a035-36423d242f2b_project_data/7XeoJ45UwpA.mp3" type="audio/mpeg" />
+      <audio autoPlay loop preload="auto">
+        <source src="/ost" type="audio/mpeg" />
         Browser Anda tidak mendukung elemen audio.
       </audio>
     </div>
