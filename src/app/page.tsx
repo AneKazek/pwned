@@ -5,6 +5,7 @@ export default function Home() {
   const mainMessage = 'Hacked By Muhammad Dzaky Haidar';
   const secondaryMessage = "You've been owned!";
   const pocMessage = 'For PoC purposes';
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
   return (
     <div className="relative min-h-screen bg-black flex flex-col items-center justify-center text-center overflow-hidden">
@@ -33,7 +34,7 @@ export default function Home() {
         </p>
       </main>
       <audio autoPlay loop preload="auto">
-        <source src="/ost" type="audio/mpeg" />
+        <source src={`${basePath}/ost.mp3`} type="audio/mpeg" />
         Browser Anda tidak mendukung elemen audio.
       </audio>
     </div>

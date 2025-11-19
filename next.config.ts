@@ -1,7 +1,12 @@
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: 'export',
+  trailingSlash: true,
+  basePath: basePath || undefined,
+  assetPrefix: basePath || undefined,
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -9,6 +14,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
