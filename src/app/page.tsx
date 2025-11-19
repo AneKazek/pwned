@@ -1,3 +1,5 @@
+"use client"
+import { useEffect, useRef } from 'react'
 import MatrixRain from '@/components/hacker/matrix-rain';
 import Skull from '@/components/hacker/skull';
 
@@ -6,6 +8,32 @@ export default function Home() {
   const secondaryMessage = "You've been owned!";
   const pocMessage = 'For PoC purposes';
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return
+
+    const tryPlay = async () => {
+      try {
+        await audio.play()
+      } catch {
+        const handler = async () => {
+          try {
+            await audio.play()
+          } finally {
+            document.removeEventListener('click', handler)
+            document.removeEventListener('touchstart', handler)
+            document.removeEventListener('keydown', handler)
+          }
+        }
+        document.addEventListener('click', handler)
+        document.addEventListener('touchstart', handler)
+        document.addEventListener('keydown', handler)
+      }
+    }
+    tryPlay()
+  }, [])
 
   return (
     <div className="relative min-h-screen bg-black flex flex-col items-center justify-center text-center overflow-hidden">
@@ -33,7 +61,7 @@ export default function Home() {
           {pocMessage}
         </p>
       </main>
-      <audio autoPlay loop preload="auto">
+      <audio ref={audioRef} autoPlay loop preload="auto">
         <source src={`${basePath}/ost.mp3`} type="audio/mpeg" />
         Browser Anda tidak mendukung elemen audio.
       </audio>
